@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>instantgram • carousel edition</title>
+  <style>
+    :root {
+      --bg: #090a0f;
+      --card: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.1);
+      --accent: #e1306c;
+      --accent-grad: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(225, 48, 108, 0.15);
+      color: #ff5e97;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(225, 48, 108, 0.3);
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      background: var(--accent-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.subtitle {
+      color: var(--muted);
+      font-size: 1.15rem;
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .btn-container {
+      margin-bottom: 40px;
+    }
+    .bookmarklet-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent-grad);
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px -5px rgba(225, 48, 108, 0.4);
+      cursor: grab;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .bookmarklet-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -5px rgba(225, 48, 108, 0.6);
+    }
+    .drag-hint {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      max-width: 520px;
+      width: 100%;
+      text-align: left;
+      backdrop-filter: blur(12px);
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    ol {
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    ol li strong { color: var(--text); }
+    footer {
+      margin-top: 50px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <span class="badge">UPDATED FOR 2026</span>
+  <h1>instantgram</h1>
+  <p class="subtitle">Download single images, full-resolution carousel slides, and videos directly from Instagram web.</p>
+
+  <div class="btn-container">
+    <a class="bookmarklet-btn" href="javascript:(()=>{try{const t=document.querySelector('div[role=&quot;dialog&quot;]')||document.querySelector(&quot;main&quot;)||document.querySelector(&quot;article&quot;)||document.body;const e=Array.from(t.querySelectorAll(&quot;img, video&quot;)).filter(t=>{const e=t.getBoundingClientRect();return e.width>250&&e.height>250&&e.right>0&&e.left<window.innerWidth&&e.bottom>0&&e.top<window.innerHeight&&&quot;user-avatar&quot;!==t.getAttribute(&quot;data-testid&quot;)});if(!e.length)return void alert(&quot;Couldn't find any post media in view!&quot;);let r=e[0],i=1/0,o=window.innerWidth/2;e.forEach(t=>{const e=t.getBoundingClientRect(),n=Math.abs(e.left+e.width/2-o);n<i&&(i=n,r=t)});let n=&quot;&quot;;if(&quot;VIDEO&quot;===r.tagName)n=r.currentSrc||r.src;else{const t=r.getAttribute(&quot;srcset&quot;);n=t?t.split(&quot;,&quot;).map(t=>t.trim().split(&quot; &quot;)[0]).pop():r.src}if(n&&!n.startsWith(&quot;blob:&quot;)){const t=window.open(n,&quot;_blank&quot;);t||(window.location.href=n)}else if(n&&n.startsWith(&quot;blob:&quot;)){const t=r.closest(&quot;div&quot;);const e=t?t.querySelector(&quot;img&quot;):null;if(e){const t=e.getAttribute(&quot;srcset&quot;);const r=t?t.split(&quot;,&quot;).map(t=>t.trim().split(&quot; &quot;)[0]).pop():e.src;window.open(r,&quot;_blank&quot;)}else alert(&quot;Video stream is protected blob.&quot;)}else alert(&quot;Couldn't resolve media URL.&quot;)}catch(t){console.error(t);alert(&quot;Error: &quot;+t.message)}})();">
+      ☁️ Instantgram Carousel
+    </a>
+    <span class="drag-hint">👆 Drag this button to your browser Bookmarks Bar</span>
+  </div>
+
+  <div class="card">
+    <h3>⚡ How to Use</h3>
+    <ol>
+      <li>Drag the button above directly into your <strong>Bookmarks Bar</strong>.</li>
+      <li>Open any post or carousel on <strong>instagram.com</strong>.</li>
+      <li>Scroll/swipe to the carousel slide you want to grab.</li>
+      <li>Click <strong>Instantgram Carousel</strong> in your bookmarks.</li>
+      <li>Opens the highest-resolution CDN master file in a new tab.</li>
+    </ol>
+  </div>
+
+  <footer>
+    Remade & maintained by <a href="https://github.com/jerbezy">@jerbezy</a>
+  </footer>
+
+</body>
+</html>
